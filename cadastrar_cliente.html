@@ -1,0 +1,49 @@
+{% extends "base.html"%}
+
+{% block conteudo %}
+
+
+
+<h1 class="titulo">Cadastro</h1>
+
+  <div class="text-center">
+  <form action="{{url_for('cadastrar_cliente', id_cliente=id_cliente)}}" method="POST" enctype="multipart/form-data" class="centralizar">
+		<div class="form-group ">
+            <div class="separar">
+			<label class=" text-dark separar " >Email</label><br>
+          <input class="form-control text-center " type="text" name="email" placeholder="Digite seu email." required>
+            </div>
+            <div class="separar">
+                <label class=" text-dark separar ">Apelido</label><br>
+			<input class="form-control text-center " type="text"   name="apelido" placeholder="Digite um apelido. " required>
+            </div>
+            <div class="separar">
+                <label class=" text-dark separar">Endereço</label><br>
+		    <textarea class="form-control text-center" name="endereco" placeholder="Digite seu endereço completo." ></textarea>
+            </div>
+              <div class="separar">
+                <label class=" text-dark separar ">Senha</label><br>
+			<input class="form-control text-center " type="password"   name="senha" placeholder="Digite aqui sua senha. " required>
+            </div>
+            <div class="separar">
+                <label class=" text-dark separar ">Confirmar Senha</label><br>
+			<input class="form-control text-center " type="password"   name="confirmar_senha" placeholder="Confirme sua senha aqui. " required>
+            </div>
+        </div>
+		<p></p>
+              {%- for mensagem in get_flashed_messages() %}
+                {% if 'não' in mensagem or 'Apelido' in mensagem or 'Email' in mensagem %}
+                    <div class="alert alert-danger text-center">
+                        {{mensagem}}
+                    </div>
+                {% endif %}
+              {%- endfor %}
+     <div class="btn-group" role="group" aria-label="Basic outlined example">
+       <a href="{{url_for('cadastrar_cliente', id_cliente=id_cliente)}}"><button type="submit" class="btn btn-outline-primary">Cadastro</button></a>
+
+     </div>
+	</form>
+  </div>
+
+
+{% endblock %}

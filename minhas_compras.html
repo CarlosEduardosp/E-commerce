@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+ <h1 class="titulo">Minhas compras</h1>
+<table class="table centralizarcarrinho">
+  <thead>
+    <tr>
+      <th scope="col">Imagem</th>
+      <th scope="col">Produto</th>
+      <th scope="col">N° Pedido</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Valor do Pedido</th>
+      <th scope="col">Data Pedido</th>
+        <th scope="col">Status</th>
+    </tr>
+  </thead>
+
+     {% for i in lista_pedidos %}
+        {% if id_cliente == i.id_cliente %}
+
+  <tbody>
+    <tr>
+
+      {% for j in produtos %}
+        {% if j[0].id_produto == i.id_produto %}
+          <td><img class="icone_carrinho rounded-circle"  src="\static\{{j[0].imagem}}" alt=""></td>
+       <td>{{j[0].nome}}</td>
+        {% endif %}
+      {%endfor %}
+
+      <td>{{i.numero_pedido}}</td>
+      <td>{{i.id_cliente}}</td>
+      <td>R$ {{i.valor}},00</td>
+      <td>{{i.data_pedido}}</td>
+        <td>{{i.status}}</td>
+      <td>
+
+      </td>
+    </tr>
+
+  </tbody>
+{% endif %}
+
+
+    {% endfor %}
+
+</table>
+{% endblock%}

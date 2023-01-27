@@ -1,0 +1,46 @@
+{% extends "base.html"%}
+
+{% block conteudo %}
+    <h1 class="titulo">Meu Carrinho de Compras</h1>
+<table class="table centralizartable">
+  <thead>
+    <tr>
+      <th scope="col">Imagem</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Preço</th>
+    </tr>
+  </thead>
+
+     {% for i in carrinho %}
+
+
+  <tbody>
+    <tr>
+
+      <th ><img class="icone_carrinho rounded-circle"  src="\static\{{i[0].imagem}}" alt=""></a></th>
+      <td>{{i[0].nome}}</td>
+      <td>{{i[0].descricao}}</td>
+      <td>R$ {{i[0].preco}},00</td>
+      <td>
+          <form class="">
+            <a href="{{url_for('deletar', id_cliente=id_cliente, produto=i[0].id_produto, operacao=1)}}" class="btn btn-outline-danger">Deletar</a>
+      </form>
+      </td>
+    </tr>
+
+  </tbody>
+
+
+
+    {% endfor %}
+
+</table>
+<div class="centralizar">
+    <a href="{{url_for('pedido', id_cliente=id_cliente)}}" class="btn btn-success ajustar  "><h1>Realizar Pedido</h1></a>
+</div>
+
+
+
+
+{% endblock %}
