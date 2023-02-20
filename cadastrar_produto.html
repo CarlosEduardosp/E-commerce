@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+        <h1 class="titulo">Cadastro de Produtos</h1>
+
+  <div class="text-center">
+  <form action="{{url_for('cadastrar_produto', id_cliente=id_cliente)}}" method="POST" enctype="multipart/form-data" class="centralizar">
+		<div class="form-group ">
+            <div class="mb-3 separar">
+                  <label for="formFile" class="form-label separar">Faça o upload da imagem aqui:</label>
+                  <input class="form-control" type="file" id="formFile" name="upload">
+            </div>
+            <div class="separar">
+			<label class=" text-dark separar " >Nome do produto</label><br>
+          <input class="form-control text-center " type="text" name="nome" placeholder="Digite o nome do seu produto." required>
+            </div>
+            <div class="separar">
+                <label class=" text-dark separar ">Preço</label><br>
+			<input class="form-control text-center " type="text"   name="preco" placeholder="Digite aqui o preço do produto. " required>
+            </div>
+            <div class="separar">
+                <label class=" text-dark separar">Descrição do Produto</label><br>
+		    <textarea class="form-control text-center" name="descricao" placeholder="Digite a descrição do seu produto." ></textarea>
+            </div>
+
+        </div>
+		<p></p>
+     <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <button type="submit" class="btn btn-outline-primary">Adicionar</button>
+         <a href="{{url_for('produtos', id_cliente=id_cliente, id_produto=0)}}" class="btn btn-outline-primary" >Voltar</a>
+
+     </div>
+	</form>
+  </div>
+{% endblock %}
+

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+ <h1 class="titulo">Clientes Cadastrados</h1>
+
+
+
+
+<table class="table centralizartable">
+  <thead>
+
+  {%- for mensagem in get_flashed_messages() %}
+                {% if 'com' in mensagem or 'ADM' in mensagem %}
+                    <div class="alert alert-danger text-center ">
+                        {{mensagem}}
+                    </div>
+                {% endif %}
+              {%- endfor %}
+
+    <tr>
+      <th scope="col">Id_cliente</th>
+      <th scope="col">Apelido</th>
+      <th scope="col">Endereço</th>
+      <th scope="col">Endereço de Email</th>
+    </tr>
+  </thead>
+
+     {% for i in lista_clientes %}
+
+
+  <tbody>
+    <tr>
+
+
+      <td>{{i.id_cliente}}</td>
+      <td>{{i.apelido.title()}}</td>
+
+        {% for j in endereco  %}
+            {% if i.cep_cliente == j[0].cep_cliente and i.apelido == j[0].id_cliente %}
+
+        <td><details>
+            <summary>Clique para ver o <br>Endereço Cadastrado</summary>
+            Cep: {{i.cep_cliente}}<br>
+            Estado: {{j[0].estado}}<br>
+            Cidade: {{j[0].cidade}}<br>
+            Bairro: {{j[0].bairro}}<br>
+            Logradouro: {{j[0].logradouro}}<br>
+            complemento: {{j[0].complemento}}<br>
+            </details>
+        </td>
+
+            {% endif %}
+        {% endfor %}
+
+      <td>{{i.email}}</td>
+      <td>
+          <form class="ajustar">
+            <a href="{{url_for('deletar', id_cliente=id_cliente, produto=i.id_cliente, operacao=2)}}" class="btn btn-outline-danger">Deletar</a>
+      </form>
+      </td>
+    </tr>
+
+  </tbody>
+
+
+
+    {% endfor %}
+
+</table>
+{% endblock%}

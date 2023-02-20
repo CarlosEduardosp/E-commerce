@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h1 class="titulo">Validação de Email </h1>
+
+{%- for mensagem in get_flashed_messages() %}
+                {% if 'confere' in mensagem or 'Cadastro' in mensagem %}
+                    <div class="alert alert-danger text-center">
+                        {{mensagem}}
+                    </div>
+
+                {% endif %}
+              {%- endfor %}
+
+
+<h2 class="titulo ">Enviamos um código para o email <br><br><mark class="rounded bg bg-dark text-light">{{email}}</mark></h2>
+<h2 class="titulo">Digite aqui para verificação do email:</h2>
+
+ <form action="{{url_for('validar_email', id_cliente=id_cliente)}}" class="row g-3 text-center" method="POST">
+
+<div class="col-md-2 centrovalidar">
+    <input  type="text" class="form-control text-center " id="numero1" name="numero1"  value="">
+  </div >
+
+
+    <div  class="text-center centro paddingdiv">
+        <br>
+        <button type="submit" class="btn btn-outline-primary ">Validar</button>
+    </div>
+ </form>
+
+{% endblock %}

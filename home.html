@@ -1,0 +1,54 @@
+{% extends "base.html"%}
+{% block conteudo%}
+
+
+ <div class="text-center ">
+    <div class="container-fluid ">
+
+        <div class="padding "  >
+
+         <img class="rounded painel img-fluid border border-5 border-dark" src="\static\imagem\{{nome_imagem[0][0].nome_imagem}}" alt="Imagem não disponível no momento.">
+
+        </div>
+
+
+     </div></div>
+
+      {%- for mensagem in get_flashed_messages() %}
+                {% if 'adicionado' in mensagem %}
+                    <div class="alert alert-primary text-center">
+                        {{mensagem}}
+                    </div>
+                {% endif %}
+              {%- endfor %}
+
+<div class="row centralizarhome">
+
+        {% for i in produtos %}
+            {% if i != 'estilo.css' and i != 'carrinho.png' and i != 'free.jpg'  %}
+
+  <div class="col-md-3 separarhome ">
+<div class="card text-center " style="width: 20rem;">
+<img src="\static\{{i[0].imagem}}" class=" card-img-top imgquadrada " alt="...">
+  <div class="card-body imgquadrada">
+    <h5 class="card-title text-center">{{i[0].nome.title()}}</h5>
+    <p class="card-text acertartexto text-center">{{i[0].descricao.title()}}</p>
+    <h5 class="card-title text-center ">R$ - {{i[0].preco}}</h5>
+      {% if id_cliente != 'Efetue o Login!' %}
+            <a href="{{url_for('addcarrinho', id_cliente=id_cliente, produto=i[0].id_produto)}}"  class="btn btn-outline-dark">Adicionar ao Carrinho</a>
+        {% endif %}
+      {% if id_cliente == 'Efetue o Login!' %}
+          <a href="{{url_for('login', id_cliente=id_cliente)}}" class="btn btn-outline-dark">Adicionar ao Carrinho</a>
+      {% endif %}
+  </div>
+</div>
+  </div>
+
+
+        {% endif %}
+      {% endfor %}
+</div>
+    </div>
+ </div>
+{% endblock%}
+

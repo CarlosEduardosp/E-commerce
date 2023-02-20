@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<div class="centralizartable ">
+<h1 class="titulo ">Cadastrar Produtos</h1>
+<a href="{{url_for('cadastrar_produto', id_cliente=id_cliente)}}" class="btn btn-outline-success separar">Ir para Cadastro</a>
+</div>
+<br><br>
+ <h1 class="titulo ">Produtos Cadastrados</h1>
+
+{%- for mensagem in get_flashed_messages() %}
+                {% if 'Editado' in mensagem  %}
+                    <div class="alert alert-success text-center">
+                        {{mensagem}}
+                    </div>
+                {% endif %}
+              {%- endfor %}
+
+<table class="table centralizartable">
+  <thead>
+    <tr>
+      <th scope="col">Imagem</th>
+      <th scope="col">Id_produto</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Preço</th>
+    </tr>
+  </thead>
+
+
+     {% for  i in range(quantidade) %}
+
+
+  <tbody>
+    <tr>
+
+      <th ><img class="icone_carrinho rounded-circle"  src="\static\{{lista_produtos[i].imagem}}" alt=""></a></th>
+
+      <td>{{cont[i]}}</td>
+
+      <td>{{lista_produtos[i].nome}}</td>
+      <td>{{lista_produtos[i].descricao}}</td>
+      <td>R$ {{lista_produtos[i].preco}},00</td>
+      <td>
+        <div class="ajustar separar">
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <a href="{{url_for('editar_produtos', id_cliente=id_cliente, id_produto=lista_produtos[i].id_produto)}}" class="btn btn-outline-success">Editar</a>
+            <a href="{{url_for('deletar', id_cliente=id_cliente, produto=lista_produtos[i].id_produto, operacao=3)}}" class="btn btn-outline-danger">Deletar</a>
+        </div>
+        </div>
+      </td>
+    </tr>
+
+  </tbody>
+
+
+
+    {% endfor %}
+</table>
+{% endblock%}
