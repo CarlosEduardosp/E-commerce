@@ -8,4 +8,3 @@ WORKDIR  /delivery
 
 CMD ["python", "main.py"]
 
-EXPOSE 5000
