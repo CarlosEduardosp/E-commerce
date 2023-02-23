@@ -1118,6 +1118,7 @@ def editar_perfil(id_cliente):
 
     return render_template('editar_perfil.html', id_cliente=id_cliente, clientes=clientes, endereco=endereco)
 
+#inicializar aplicação
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=5000)
