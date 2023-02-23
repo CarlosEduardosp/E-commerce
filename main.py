@@ -517,7 +517,7 @@ def cadastrar_produto(id_cliente):
         nome_imagem = imagem.filename
 
         # salvando arquivo na pasta static.
-        diretorio = '.\static'
+        diretorio = './static'
         imagem.save(os.path.join(diretorio, nome_imagem))
 
         produto = Produto(nome=nome_produto, descricao=descricao, preco=preco, imagem=nome_imagem)
@@ -532,7 +532,6 @@ def cadastrar_produto(id_cliente):
 @app.route('/home/<id_cliente>', methods=['GET', 'POST'])
 def homepage(id_cliente):
     """ Página inicial, busca todos os dados na tabela Produto e faz a  exibição na tela. """
-    cor_fundo = db.session.execute(db.select(Cor)).all()
 
     produtos = db.session.execute(db.select(Produto)).all()
     nome_imagem = db.session.execute(db.select(ImagemPerfil)).all()
@@ -540,11 +539,14 @@ def homepage(id_cliente):
     num = carrinho_compras(id_cliente)
 
     # retorna todos os nomes dos arquivos na pasta static.
-    img = os.listdir('.\static')
+    path = "./static"
+    img = os.listdir(path)
+
+    # recupera a quantidade de imagens na pasta
     carrinho = len(img)
 
     return render_template('home.html', num=num, carrinho=carrinho, produtos=produtos, id_cliente=id_cliente,
-                           nome_imagem=nome_imagem, cor_fundo=cor_fundo[0][0].cor)
+                           nome_imagem=nome_imagem)
 
 
 @app.route('/login', defaults={'id_cliente': 'Efetue o Login!'}, methods=['GET', 'POST'])
@@ -851,14 +853,14 @@ def editar(id_cliente):
             nome_imagem = imagem.filename
 
             # removendo a imagem antiga do diretório.
-            path = ".\static\imagem"
+            path = "./static/imagem"
             dir = os.listdir(path)
             for i in dir:
                 if nome_da_imagem_antiga == i:
                     os.remove('{}/{}'.format(path, nome_da_imagem_antiga))
 
             # salvando arquivo/imagem nova na pasta static.
-            diretorio = '.\static\imagem'
+            diretorio = './static/imagem'
             imagem.save(os.path.join(diretorio, nome_imagem))
 
             # deletando a imagem antiga do banco de dados.
@@ -1101,7 +1103,6 @@ def perfil(id_cliente):
         return redirect(url_for('perfil', id_cliente=id_cliente))
 
 
-
     clientes = db.session.execute(db.select(Cliente)).all()
     endereco = db.session.execute(db.select(Endereco)).all()
 
@@ -1119,6 +1120,6 @@ def editar_perfil(id_cliente):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=5000)
     with app.app_context():
         db.create_all()
