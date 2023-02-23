@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+
+<h1 class="titulo">Meus Dados</h1>
+<table class="table centro">
+  <thead>
+    <tr>
+
+      <th scope="col"  >Email</th>
+      <th scope="col" >Apelido</th>
+      <th scope="col">Cep</th>
+      <th scope="col">Estado</th>
+        <th scope="col">Cidade</th>
+        <th scope="col">Bairro</th>
+        <th scope="col">Logradouro</th>
+        <th scope="col">complemento</th>
+    </tr>
+  </thead>
+
+     {% for i in clientes %}
+         {% if id_cliente == i[0].apelido %}
+
+  <tbody>
+    <tr>
+
+        <form action="{{url_for('perfil', id_cliente=id_cliente)}}" class=" centralizar" method="POST">
+  <div class="mb-1  ">
+      <td width="300px"><input type="text" class="form-control text-center" name="email" aria-describedby="emailHelp" value="{{i[0].email}}"></td>
+  </div>
+  <div class="mb-1">
+      <td  width="150px"><input type="text" class="form-control text-center" name="apelido" aria-describedby="emailHelp" value="{{i[0].apelido}}"></td>
+  </div>
+  <br>
+      <td width="200px"><input  type="text" class="form-control text-center" name="cep_cliente" aria-describedby="emailHelp" value="{{i[0].cep_cliente}}"></td>
+      <div class="mb-1">
+          {% for x in endereco %}
+            {% if x[0].cep_cliente == i[0].cep_cliente and x[0].id_cliente == id_cliente %}
+
+      <td width="50px"><input type="text" class="form-control " name="estado" aria-describedby="emailHelp" value="{{x[0].estado}}"></td>
+  </div>
+      <div class="mb-1">
+      <td><input type="text" class="form-control text-center" name="cidade" aria-describedby="emailHelp" value="{{x[0].cidade}}"></td>
+  </div>
+            <div class="mb-1">
+      <td><input type="text" class="form-control text-center " name="bairro" aria-describedby="emailHelp" value="{{x[0].bairro}}"></td>
+  </div>
+            <div class="mb-1">
+      <td><input type="text" class="form-control text-center" name="logradouro" aria-describedby="emailHelp" value="{{x[0].logradouro}}"></td>
+  </div>
+            <div class="mb-1">
+      <td><input type="text" class="form-control text-center" name="complemento" aria-describedby="emailHelp" value="{{x[0].complemento}}"></td>
+  </div>
+            {% endif %}
+{% endfor %}
+
+          </div></td>
+              <td> <a href="{{url_for('perfil', id_cliente=id_cliente)}}" ><button type="submit" class="btn btn-outline-success" >Atualizar</button></a>
+              </td>
+</form>
+    </tr>
+
+  </tbody>
+        {% endif %}
+
+
+    {% endfor %}
+
+</table>
+
+
+
+{% endblock %}

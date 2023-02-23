@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+
+<h1 class="titulo">Meus Dados</h1>
+
+{%- for mensagem in get_flashed_messages() %}
+                {% if 'Seus' in mensagem  %}
+                    <div class="alert alert-success text-center">
+                        {{mensagem}}
+                    </div>
+                {% endif %}
+              {%- endfor %}
+
+<table class="table centrovalidar">
+  <thead>
+    <tr>
+
+      <th scope="col"  >Email</th>
+      <th scope="col" >Apelido</th>
+      <th scope="col">Cep</th>
+      <th scope="col">Estado</th>
+        <th scope="col">Cidade</th>
+        <th scope="col">Bairro</th>
+        <th scope="col">Logradouro</th>
+        <th scope="col">complemento</th>
+    </tr>
+  </thead>
+
+     {% for i in clientes %}
+         {% if id_cliente == i[0].apelido %}
+
+  <tbody>
+    <tr>
+
+
+
+        <td width="100px"> {{i[0].email}} </td>
+
+      <td>{{i[0].apelido}}</td>
+      <td>{{i[0].cep_cliente}}</td>
+
+        {% for x in endereco %}
+            {% if x[0].cep_cliente == i[0].cep_cliente and x[0].id_cliente == id_cliente %}
+        <td>{{x[0].estado}}</td>
+        <td>{{x[0].cidade}}</td>
+        <td>{{x[0].bairro}}</td>
+        <td>{{x[0].logradouro}}</td>
+        <td>{{x[0].complemento}}</td>
+
+            {% endif %}
+        {% endfor %}
+
+<td> <a href="{{url_for('editar_perfil', id_cliente=id_cliente)}}" ><button type="submit" class="btn btn-outline-success" >Editar</button></a>
+             </td>
+
+
+
+    </tr>
+
+  </tbody>
+        {% endif %}
+
+
+    {% endfor %}
+
+</table>
+
+
+
+{% endblock %}

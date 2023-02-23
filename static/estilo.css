@@ -1,0 +1,116 @@
+.imgquadrada{
+    width: 318px;
+    height: 230px;
+}
+.acertartexto{
+    width: 300px;
+    height: 80px;
+}
+.icone{
+    width: 30px;
+    height: 30px;
+}
+.painel{
+    width: 1400px;
+    height: 400px;
+}
+.centralizar{
+        text-align: center;
+        width: 500px;
+        height: 400px;
+        padding: 0px 4%;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: white
+}
+
+.titulo{
+        text-align: center;
+        padding: 20px 10%
+}
+
+.separar{
+        padding: 5px 3%;
+
+}
+.ajustar{
+        margin-right: auto;
+        margin-left: auto
+}
+.icone_carrinho{
+    width: 100px;
+    height: 100px;
+}
+.centralizarcarrinho{
+        text-align: center;
+        width: 800px;
+        height: 100px;
+        padding: 0px 4%;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: white
+}
+
+.centralizarhome{
+        text-align: center;
+        width: 1300px;
+        height: 200px;
+        padding: px;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: white
+}
+
+.separarhome{
+        padding: 5px 0%;
+
+}
+
+.centralizartable{
+        text-align: center;
+        width: 1100px;
+        height: 100px;
+        padding: 0px 4%;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: white
+}
+.padding{
+        padding: 20px 3%;
+}
+.painel2{
+    width: 1300px;
+    height: 100px;
+}
+.centralizarcadastro{
+        text-align: center;
+        width: 700px;
+        height: 400px;
+        padding: 0px 4%;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: white
+}
+.centro{
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+
+}
+.centrovalidar{
+        text-align: center;
+        width: 300px;
+        height: 0px;
+        padding: 20px 5%;
+        margin-right: auto;
+        margin-left: auto;
+
+}
+.paddingbutton{
+        padding: 10px 10%;
+}
+.paddingdiv{
+        padding: 10px 0%;
+}
+
+

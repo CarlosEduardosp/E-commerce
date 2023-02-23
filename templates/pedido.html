@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<h1 class="titulo">{{id_cliente.title()}}, Confirme seu Pedido aqui:</h1>
+
+<h2 class="titulo ajustar">Dados Pessoais:</h2>
+
+<table class="table icone_carrinho centralizartable">
+  <thead>
+    <tr>
+      <th scope="col">Id_cliente</th>
+      <th scope="col">Apelido</th>
+      <th scope="col">Endereço de Entrega</th>
+      <th scope="col">Email</th>
+
+    </tr>
+
+</thead>
+
+     {% for i in clientes %}
+
+
+  <tbody>
+    <tr>
+
+
+      <td>{{i.id_cliente}}</td>
+      <td>{{i.apelido}}</td>
+      <td>
+        {% for j in end %}
+            {% if i.cep_cliente == j[0].cep_cliente and id_cliente == j[0].id_cliente %}
+        <mark class="rounded">Cep:</mark> {{j[0].cep_cliente}}
+               <mark class="rounded">UF:</mark> {{j[0].estado}}
+                <mark class="rounded">Cidade:</mark> {{j[0].cidade}}
+               <mark class="rounded">Bairro:</mark> {{j[0].bairro}}<br>
+        <mark class="rounded">Avenida/Rua:</mark> {{j[0].logradouro}}
+        <mark class="rounded">Complemento:</mark> {{j[0].complemento}}
+            {% endif %}
+        {% endfor %}
+      </td>
+      <td>{{i.email}}</td>
+
+    </tr>
+
+  </tbody>
+
+
+
+    {% endfor %}
+
+</table>
+
+
+<h2 class="titulo ">Dados Pedidos:</h2>
+
+<table class="table painel centralizartable">
+  <thead>
+    <tr>
+      <th scope="col">Imagem</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Preço</th>
+
+    </tr>
+  </thead>
+
+     {% for i in carrinho %}
+
+
+  <tbody>
+    <tr>
+
+      <th ><img class="icone_carrinho rounded-circle"  src="\static\{{i[0].imagem}}" alt=""></a></th>
+      <td>{{i[0].nome}}</td>
+      <td>{{i[0].descricao}}</td>
+      <td>R$ {{i[0].preco}},00</td>
+
+
+    </tr>
+
+  </tbody>
+
+
+    {% endfor %}
+
+</table>
+
+  <div class="titulo">
+    <h1 class="titulo separar">Valor Total:</h1>
+      <span class="badge text-bg-light border border-dark p-3 ">
+        <h2 class=" text-danger ajustar">R$ {{valor}},00</h2>
+      </span>
+  </div>
+
+<div class="centralizar">
+    <a href="{{url_for('confirmar_pedido', id_cliente=id_cliente, valor=valor)}}" class="btn btn-outline-dark ajustar "><h1>Confirmar Pedido</h1></a>
+</div>
+
+
+{% endblock %}
