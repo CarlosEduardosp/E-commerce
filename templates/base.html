@@ -15,39 +15,39 @@
 
        <nav class="nav justify-content-center">
 
-    <a class="nav-link active text-dark" href="#">Olá, {{id_cliente.title()}}</a>
+           <a class="nav-link active text-dark" href="#"><h4>Olá, {{id_cliente.title()}}</h4></a>
 
-          <a class="nav-link active text-dark" aria-current="page" href="{{url_for('homepage', id_cliente=id_cliente)}}">Home</a>
+          <a class="nav-link active text-dark" aria-current="page" href="{{url_for('homepage', id_cliente=id_cliente)}}"><h4>Home</h4></a>
         </li>
 
           {% if 'adm' in id_cliente or 'Adm' in id_cliente or 'ADM' in id_cliente %}
 
           <li class="nav-item">
-              <a class="nav-link text-dark" href="{{url_for('clientes', id_cliente=id_cliente)}}">Clientes</a>
+              <a class="nav-link text-dark" href="{{url_for('clientes', id_cliente=id_cliente)}}"><h4>Clientes</h4></a>
             </li>
           <li class="nav-item">
-              <a class="nav-link text-dark" href="{{url_for('produtos', id_cliente=id_cliente, id_produto=0)}}">Produtos</a>
+              <a class="nav-link text-dark" href="{{url_for('produtos', id_cliente=id_cliente, id_produto=0)}}"><h4>Produtos</h4></a>
             </li>
           <li class="nav-item">
-              <a class="nav-link text-dark" href="{{url_for('controle_pedidos', id_cliente=id_cliente)}}">Controle-Pedidos</a>
+              <a class="nav-link text-dark" href="{{url_for('controle_pedidos', id_cliente=id_cliente)}}"><h4>Controle_Pedidos</h4> </a>
             </li>
           <li class="nav-item">
-              <a class="nav-link text-dark" href="{{url_for('editar', id_cliente=id_cliente)}}">Editar Loja</a>
+              <a class="nav-link text-dark" href="{{url_for('editar', id_cliente=id_cliente)}}"><h4>Editar Loja</h4> </a>
             </li>
 
           {% endif %}
             {% if id_cliente != "Efetue o Login!"%}
             {% if id_cliente != "ADM" and id_cliente != "adm" and id_cliente != "Adm" %}
           <li class="nav-item">
-          <a class="nav-link active text-dark" aria-current="page" href="{{url_for('minhas_compras', id_cliente=id_cliente)}}">Minhas Compras</a>
+          <a class="nav-link active text-dark" aria-current="page" href="{{url_for('minhas_compras', id_cliente=id_cliente)}}"><h4>Minhas Compras</h4> </a>
         </li>
             {% endif %}
           {% endif %}
           <li class="nav-item">
-              <a class="nav-link text-dark" href="{{url_for('perfil', id_cliente=id_cliente)}}">Perfil</a>
+              <a class="nav-link text-dark" href="{{url_for('perfil', id_cliente=id_cliente)}}"><h4>Perfil</h4> </a>
             </li>
            <li class="nav-item">
-          <a class="nav-link text-dark" href="{{url_for('login', id_cliente=id_cliente)}}">login</a>
+          <a class="nav-link text-dark" href="{{url_for('login', id_cliente=id_cliente)}}"><h4>Login</h4> </a>
         </li>
 
 
@@ -57,7 +57,7 @@
       <button type="button"  class="btn btn-white position-relative">
         <a href="{{url_for('carrinho', id_cliente=id_cliente)}}">
 
-  <img class="icone"  src="\static\carrinho.png" alt=""></a>
+  <img class="icone "  src="\static\carrinho.png" alt=""></a>
 
           {% if num == 0 %}
               <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -73,8 +73,9 @@
 
 
         <a type="button" href="{{url_for('sair', id_cliente=id_cliente)}}">
-            <button class="btn btn-white">Sair</button>
-            </a><br>
+
+            <button class="btn btn-white  "><h5><mark class="rounded bg bg-dark text-white">Sair</mark></h5></button>
+           </a><br>
         {% endif %}
     </div>
   </div>
