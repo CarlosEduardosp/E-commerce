@@ -10,51 +10,56 @@
     <title>E-Commerce</title>
 </head>
 
-<br>
+
 <body class="rounded bg bg-white">
 
-       <nav class="nav justify-content-center">
-
-    <a class="nav-link active text-dark" href="http://127.0.0.1:5000/perfil/ADM">Olá, {{id_cliente.title()}}</a>
-
-          <a class="nav-link active text-dark" aria-current="page" href="{{url_for('homepage', id_cliente=id_cliente)}}">Home</a>
+       <nav class="navbar navbar-expand-lg  text-white navbar-white bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white" href="#">Olá, {{id_cliente.title()}}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="{{url_for('homepage', id_cliente=id_cliente)}}">Home</a>
         </li>
 
           {% if 'adm' in id_cliente or 'Adm' in id_cliente or 'ADM' in id_cliente %}
 
           <li class="nav-item">
-              <a class="nav-link text-dark" href="{{url_for('clientes', id_cliente=id_cliente)}}">Clientes</a>
+              <a class="nav-link text-white" href="{{url_for('clientes', id_cliente=id_cliente)}}">Clientes</a>
             </li>
           <li class="nav-item">
-              <a class="nav-link text-dark" href="{{url_for('produtos', id_cliente=id_cliente, id_produto=0)}}">Produtos</a>
+              <a class="nav-link text-white" href="{{url_for('produtos', id_cliente=id_cliente, id_produto=0)}}">Produtos</a>
             </li>
           <li class="nav-item">
-              <a class="nav-link text-dark" href="{{url_for('controle_pedidos', id_cliente=id_cliente)}}">Controle-Pedidos</a>
+              <a class="nav-link text-white" href="{{url_for('controle_pedidos', id_cliente=id_cliente)}}">Controle-Pedidos</a>
             </li>
           <li class="nav-item">
-              <a class="nav-link text-dark" href="{{url_for('editar', id_cliente=id_cliente)}}">Editar Loja</a>
+              <a class="nav-link text-white" href="{{url_for('editar', id_cliente=id_cliente)}}">Editar Loja</a>
             </li>
 
           {% endif %}
             {% if id_cliente != "Efetue o Login!"%}
             {% if id_cliente != "ADM" and id_cliente != "adm" and id_cliente != "Adm" %}
           <li class="nav-item">
-          <a class="nav-link active text-dark" aria-current="page" href="{{url_for('minhas_compras', id_cliente=id_cliente)}}">Minhas Compras</a>
+          <a class="nav-link active text-white" aria-current="page" href="{{url_for('minhas_compras', id_cliente=id_cliente)}}">Minhas Compras</a>
         </li>
             {% endif %}
           {% endif %}
           <li class="nav-item">
-              <a class="nav-link text-dark" href="{{url_for('perfil', id_cliente=id_cliente)}}">Perfil</a>
+              <a class="nav-link text-white" href="{{url_for('perfil', id_cliente=id_cliente)}}">Perfil</a>
             </li>
            <li class="nav-item">
-          <a class="nav-link text-dark" href="{{url_for('login', id_cliente=id_cliente)}}">login</a>
+          <a class="nav-link text-white" href="{{url_for('login', id_cliente=id_cliente)}}">login</a>
         </li>
 
 
       </ul>
 
         {% if id_cliente != 'Efetue o Login!' %}
-      <button type="button"  class="btn btn-white position-relative">
+      <button type="button"  class="btn btn-dark position-relative">
         <a href="{{url_for('carrinho', id_cliente=id_cliente)}}">
 
   <img class="icone"  src="\static\carrinho.png" alt=""></a>
@@ -73,8 +78,8 @@
 
 
         <a type="button" href="{{url_for('sair', id_cliente=id_cliente)}}">
-            <button class="btn btn-white">Sair</button>
-            </a><br>
+            <button class="btn btn-outline-light">Sair</button>
+            </a>
         {% endif %}
     </div>
   </div>
