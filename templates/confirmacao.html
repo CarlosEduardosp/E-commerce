@@ -38,11 +38,29 @@
       </tr>
     </thead>
     {% for i in cliente %}
+
     <tbody>
       <tr>
         <td>{{i[0].apelido}}</td>
         <td>{{i[0].email}}</td>
-        <td>{{i[0].end}}</td>
+
+          {% for j in endereco %}
+            {% if i[0].apelido == j[0].id_cliente %}
+
+
+            <td><details>
+              <summary>Ver o Endereço</summary>
+            Cep: {{j[0].cep_cliente}}<br>
+            Estado: {{j[0].estado}}<br>
+            Cidade: {{j[0].cidade}}<br>
+            Bairro: {{j[0].bairro}}<br>
+            Logradouro: {{j[0].logradouro}}<br>
+            Complemento: {{j[0].complemento}}<br> </td>
+            </details>
+
+            {% endif %}
+          {% endfor %}
+
       </tr>
     </tbody>
     {% endfor %}

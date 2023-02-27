@@ -886,6 +886,7 @@ def confirmar_pedido(id_cliente, valor):
     pedidos = db.session.execute(db.select(Pedido)).all()
     carrinho = db.session.execute(db.select(Carrinho)).all()
     todos_os_cliente = db.session.execute(db.select(Cliente)).all()
+    endereco = db.session.execute(db.select(Endereco)).all()
 
     """ Dados do cliente"""
     cliente = []
@@ -935,7 +936,7 @@ def confirmar_pedido(id_cliente, valor):
 
         enviar_email_confirmaPedido(nome=nome, email_destinatario=email, dados_do_pedido=dados_do_pedido, todos_os_produtos=todos_os_produtos)
 
-        return render_template('confirmacao.html', id_cliente=id_cliente, dados_do_pedido=dados_do_pedido,
+        return render_template('confirmacao.html', id_cliente=id_cliente,endereco=endereco, dados_do_pedido=dados_do_pedido,
                                produtos=produtos, cliente=cliente)
 
     return render_template('pedido.html', id_cliente=id_cliente)
