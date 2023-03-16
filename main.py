@@ -1088,20 +1088,20 @@ def perfil(id_cliente):
         logradouro = request.form.get('logradouro')
         complemento = request.form.get('complemento')
 
-        Cliente.query.filter_by(id_cliente=apelido).update(
+        Cliente.query.filter_by(apelido=id_cliente).update(
             {'email': f"{email}", 'apelido': f"{apelido}",
              'cep_cliente': f"{cep_cliente}"})
         db.session.commit()
 
-        Endereco.query.filter_by(id_cliente=apelido).update(
+        Endereco.query.filter_by(id_cliente=id_cliente).update(
             {'cep_cliente': f"{cep_cliente}", 'estado': f"{estado}",
              'cidade': f"{cidade}", 'bairro': f"{bairro}", 'logradouro': f"{logradouro}",
-             'complemento': f"{complemento}"})
+             'complemento': f"{complemento}", 'id_cliente': f'{apelido}'})
         db.session.commit()
 
         mensagem = f'{id_cliente}, Seus Dados Foram Editados com Sucesso.'
         flash(mensagem)
-        return redirect(url_for('perfil', id_cliente=id_cliente))
+        return redirect(url_for('perfil', id_cliente=apelido))
 
 
     clientes = db.session.execute(db.select(Cliente)).all()
